@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&family=Lexend+Deca:wght@100..900&display=swap');
+
+.container {
+  max-width: 1000px;
+  margin: 20px auto;
+  display: flex;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card {
+  flex: 1;
+  padding: 20px;
+  color:  white;
+}
+
+.card button {
+  background-color: white;
+  padding: 10px 20px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 20px;
+  font-weight: bold;
+  border: none;
+}

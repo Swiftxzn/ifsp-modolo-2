@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind feComponents;
+@tailwind utilities;
+
+@layer components {
+    .btn-blue {
+        @apply bg-blue-500 text-white font-bold py-2 px-4 rounded Unknown at rule @apply
+    }
+
+    .btn-blue:hover {
+        @apply bg-blue-700 Unknown at rule @apply
+    }
+}

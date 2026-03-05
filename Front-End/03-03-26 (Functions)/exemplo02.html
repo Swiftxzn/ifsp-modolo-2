@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variaveis em CSS</title>
+    <style>
+        :root {
+            
+        }
+        .card {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card" style="--bg-color: #2626c0; --text-color: #aa3636;">Card 1</div>
+    <div class="card" style="--bg-color: #287a21; --text-color: #5c9a9c;">Card 2</div>
+    <div class="card" style="--bg-color: #922e79; --text-color: #ac199f;">Card 3</div>
+</body>
+</html>

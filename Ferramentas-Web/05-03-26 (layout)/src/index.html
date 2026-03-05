@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layout</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div
+      class="container bg-red-300 mx-auto p-4 my-4 text-red-900 border-red-600 border-2"
+    >
+      <p>O texto do container</p>
+    </div>
+    <!-- Eercício 01
+     Criar um container de cor de fundo verde, que ao atingir > de 768px, o fundo deve ficar azul -->
+    <div
+      class="container bg-blue-300 mx-auto p-4 my-4 text-blue-900 border-blue-600 border-2 md:bg-green-300 md:text-green-900 md:border-green-600"
+    >
+      <p>Exercício 01</p>
+    </div>
+
+    <!-- Border-box & Border-content -->
+    <div>
+      <p></p>
+    </div>
+
+    <div
+      class="cantainer bg-purple-300 mx-auto p-10 m-4 border-2 border-purple-600 box-content"
+    >
+      <p>Border Content</p>
+    </div>
+    <!-- Display -->
+    <div class="container p-10 mx-auto border-2 border-gray-600 my-4">
+      <spam>Não são elementos de blocos</spam>
+      <spam>Não são elementos de blocos</spam>
+
+      <div class="container p-10 mx-auto border-2 border-gray-600 my-4">
+        <spam class="block">Não são elementos de blocos</spam>
+        <spam class="block">Não são elementos de blocos</spam>
+        <div class="bg-blue-400">Elemento de block</div>
+        <div class="bg-blue-400">Elemento de block</div>
+      </div>
+      <div class="container p-10 mx-auto border-2 border-gray-600 my-4">
+        <div class="bg-blue-400 inline-block">Elemento de block</div>
+        <div class="bg-blue-400 inline-block">Elemento de block</div>
+        <div class="bg-green-400 hidden">Elemento de bloco</div>
+      </div>
+    </div>
+
+    <!-- Exercicio 02 
+     Criar m container com 3 divs, cada uma com uma cor diferente, as divs devem ficar numa única linha-->
+    <div class="container p-10 mx-auto border-2 border-gray-600 my-4">
+      <div class="bg-red-400 inline-block">Div 01</div>
+      <div class="bg-green-400 inline-block">Div 02</div>
+      <div class="bg-blue-400 inline-block">Div 03</div>
+    </div>
+
+  </body>
+</html>
