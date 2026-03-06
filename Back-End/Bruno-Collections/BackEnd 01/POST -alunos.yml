@@ -1,0 +1,22 @@
+info:
+  name: POST /alunos
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: http://127.0.0.1:8000/alunos
+  body:
+    type: json
+    data: |-
+      {
+        "nome": "Fulano",
+        "curso": "Informática para Internet"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
