@@ -1,0 +1,27 @@
+info:
+  name: PUT /alunos
+  type: http
+  seq: 7
+
+http:
+  method: PUT
+  url: http://127.0.0.1:8000/alunos?id=7c2236d6-9420-4bd0-961f-9fdc8f2427cd
+  params:
+    - name: id
+      value: 7c2236d6-9420-4bd0-961f-9fdc8f2427cd
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "nome": "Fulano Dev",
+        "curso": "Informática para Internet",
+        "telefone": "111199995555"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

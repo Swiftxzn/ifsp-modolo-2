@@ -1,0 +1,41 @@
+info:
+  name: Pesquisa por NCMs a partir de um código ou descrição.
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{baseUrl}}/ncm/v1?search=:code"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/ncm/v1?search=:code"
+      method: GET
+    response:
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          [
+            {
+              "codigo": "",
+              "descricao": "",
+              "data_inicio": "",
+              "data_fim": "",
+              "tipo_ato": "",
+              "numero_ato": "",
+              "ano_ato": ""
+            }
+          ]

@@ -1,0 +1,19 @@
+info:
+  name: DELETE /alunos
+  type: http
+  seq: 6
+
+http:
+  method: DELETE
+  url: http://127.0.0.1:8000/alunos?id=9e2ae7c4-d2d2-4922-bfd2-6ab2c199480d
+  params:
+    - name: id
+      value: 9e2ae7c4-d2d2-4922-bfd2-6ab2c199480d
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

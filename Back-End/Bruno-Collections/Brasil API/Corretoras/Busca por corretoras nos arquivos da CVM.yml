@@ -1,0 +1,87 @@
+info:
+  name: Busca por corretoras nos arquivos da CVM.
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{baseUrl}}/cvm/corretoras/v1/:cnpj"
+  params:
+    - name: cnpj
+      value: ""
+      type: path
+      description: |
+        O Cadastro Nacional da Pessoa Jurídica é um número único que identifica uma pessoa jurídica e outros tipos de arranjo jurídico sem personalidade jurídica junto à Receita Federal.
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/cvm/corretoras/v1/:cnpj"
+      method: GET
+      params:
+        - name: cnpj
+          value: ""
+          type: path
+          description: |
+            O Cadastro Nacional da Pessoa Jurídica é um número único que identifica uma pessoa jurídica e outros tipos de arranjo jurídico sem personalidade jurídica junto à Receita Federal.
+    response:
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "bairro": "LEBLON",
+            "cep": "22440032",
+            "cnpj": "02332886000104",
+            "codigo_cvm": "3247",
+            "complemento": "SALA 201",
+            "data_inicio_situacao": "1998-02-10",
+            "data_patrimonio_liquido": "2021-12-31",
+            "data_registro": "1997-12-05",
+            "email": "juridico.regulatorio@xpi.com.br",
+            "logradouro": "AVENIDA ATAULFO DE PAIVA 153",
+            "municipio": "RIO DE JANEIRO",
+            "nome_social": "XP INVESTIMENTOS CCTVM S.A.",
+            "nome_comercial": "XP INVESTIMENTOS",
+            "pais": "",
+            "status": "EM FUNCIONAMENTO NORMAL",
+            "telefone": "30272237",
+            "type": "CORRETORAS",
+            "uf": "RJ",
+            "valor_patrimonio_liquido": "5514593491.29"
+          }
+  - name: 404 Response
+    description: Não foi encontrado este CNPJ na listagem da CVM.
+    request:
+      url: "{{baseUrl}}/cvm/corretoras/v1/:cnpj"
+      method: GET
+      params:
+        - name: cnpj
+          value: ""
+          type: path
+          description: |
+            O Cadastro Nacional da Pessoa Jurídica é um número único que identifica uma pessoa jurídica e outros tipos de arranjo jurídico sem personalidade jurídica junto à Receita Federal.
+    response:
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "name": "NotFoundError",
+            "message": "CNPJ não encontrado",
+            "type": "CNPJ_NOT_FOUND"
+          }

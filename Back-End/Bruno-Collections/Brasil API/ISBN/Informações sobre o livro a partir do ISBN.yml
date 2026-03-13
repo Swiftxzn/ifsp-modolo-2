@@ -1,0 +1,167 @@
+info:
+  name: Informações sobre o livro a partir do ISBN
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{baseUrl}}/isbn/v1/:isbn"
+  params:
+    - name: isbn
+      value: ""
+      type: path
+      description: O código ISBN do livro. Aceita tanto o formato de 10 dígitos (obsoleto) quanto o de 13 dígitos (atual). Pode conter ou não traços de formatação.
+    - name: providers
+      value: ""
+      type: query
+      description: Lista de provedores separados por vírgula para busca do ISBN. Se não especificado, será realizada busca em todos os provedores disponíveis, retornando o resultado mais rápido.
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Sucesso
+    request:
+      url: "{{baseUrl}}/isbn/v1/:isbn"
+      method: GET
+      params:
+        - name: isbn
+          value: ""
+          type: path
+          description: O código ISBN do livro. Aceita tanto o formato de 10 dígitos (obsoleto) quanto o de 13 dígitos (atual). Pode conter ou não traços de formatação.
+        - name: providers
+          value: ""
+          type: query
+          description: Lista de provedores separados por vírgula para busca do ISBN. Se não especificado, será realizada busca em todos os provedores disponíveis, retornando o resultado mais rápido.
+          disabled: true
+    response:
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "isbn": "9788545702870",
+            "title": "Akira",
+            "subtitle": null,
+            "authors": [
+              "KATSUHIRO OTOMO",
+              "DRIK SADA",
+              "CASSIUS MEDAUAR",
+              "MARCELO DEL GRECO",
+              "DENIS TAKATA"
+            ],
+            "publisher": "Japorama Editora e Comunicação",
+            "synopsis": "Um dos marcos da ficção científica oriental que revolucionou a chegada dos mangás e da cultura pop japonesa no Ocidente retorna em uma nova edição especial. Após atropelar uma criança de aparência estranha, Tetsuo Shima (o melhor amigo de Kaneda), começa a sentir algumas reações anormais. Isso acaba chamando a atenção do governo que está projetando diversas experiências secretas e acabam sequestrando Tetsuo. Nesta aventura cheia de ficção, Kaneda entra em cena para salvar o amigo, enquanto uma terrível e monstruosa entidade ameaça despertar.",
+            "dimensions": {
+              "width": 17.5,
+              "height": 25.7,
+              "unit": "CENTIMETER"
+            },
+            "year": 2017,
+            "format": "PHYSICAL",
+            "page_count": 364,
+            "subjects": [
+              "Cartoons; caricaturas e quadrinhos",
+              "mangá",
+              "motocicleta",
+              "gangue",
+              "Delinquência"
+            ],
+            "location": "SÃO PAULO, SP",
+            "retail_price": null,
+            "cover_url": null,
+            "provider": "cbl"
+          }
+  - name: 400 Response
+    description: ISBN inválido
+    request:
+      url: "{{baseUrl}}/isbn/v1/:isbn"
+      method: GET
+      params:
+        - name: isbn
+          value: ""
+          type: path
+          description: O código ISBN do livro. Aceita tanto o formato de 10 dígitos (obsoleto) quanto o de 13 dígitos (atual). Pode conter ou não traços de formatação.
+        - name: providers
+          value: ""
+          type: query
+          description: Lista de provedores separados por vírgula para busca do ISBN. Se não especificado, será realizada busca em todos os provedores disponíveis, retornando o resultado mais rápido.
+          disabled: true
+    response:
+      statusText: Bad Request
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "name": "BadRequestError",
+            "message": "ISBN inválido",
+            "type": "bad_request"
+          }
+  - name: 404 Response
+    description: ISBN não encontrado
+    request:
+      url: "{{baseUrl}}/isbn/v1/:isbn"
+      method: GET
+      params:
+        - name: isbn
+          value: ""
+          type: path
+          description: O código ISBN do livro. Aceita tanto o formato de 10 dígitos (obsoleto) quanto o de 13 dígitos (atual). Pode conter ou não traços de formatação.
+        - name: providers
+          value: ""
+          type: query
+          description: Lista de provedores separados por vírgula para busca do ISBN. Se não especificado, será realizada busca em todos os provedores disponíveis, retornando o resultado mais rápido.
+          disabled: true
+    response:
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "name": "NotFoundError",
+            "message": "ISBN não encontrado",
+            "type": "not_found"
+          }
+  - name: 500 Response
+    description: Todos os serviços de ISBN retornaram erro
+    request:
+      url: "{{baseUrl}}/isbn/v1/:isbn"
+      method: GET
+      params:
+        - name: isbn
+          value: ""
+          type: path
+          description: O código ISBN do livro. Aceita tanto o formato de 10 dígitos (obsoleto) quanto o de 13 dígitos (atual). Pode conter ou não traços de formatação.
+        - name: providers
+          value: ""
+          type: query
+          description: Lista de provedores separados por vírgula para busca do ISBN. Se não especificado, será realizada busca em todos os provedores disponíveis, retornando o resultado mais rápido.
+          disabled: true
+    response:
+      statusText: Internal Server Error
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "name": "InternalError",
+            "message": "Todos os serviços de ISBN retornaram erro.",
+            "type": "internal"
+          }

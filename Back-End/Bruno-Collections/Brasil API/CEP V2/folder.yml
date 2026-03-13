@@ -1,0 +1,7 @@
+info:
+  name: CEP V2
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

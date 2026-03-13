@@ -1,0 +1,70 @@
+info:
+  name: Previsão meteorológica para, até, 6 dias
+  type: http
+  seq: 6
+
+http:
+  method: GET
+  url: "{{baseUrl}}/cptec/v1/clima/previsao/:cityCode/:days"
+  params:
+    - name: cityCode
+      value: ""
+      type: path
+      description: Código da cidade fornecido pelo endpoint /cidade
+    - name: days
+      value: ""
+      type: path
+      description: Quantidade de dias desejado para a previsão
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    request:
+      url: "{{baseUrl}}/cptec/v1/clima/previsao/:cityCode/:days"
+      method: GET
+      params:
+        - name: cityCode
+          value: ""
+          type: path
+          description: Código da cidade fornecido pelo endpoint /cidade
+        - name: days
+          value: ""
+          type: path
+          description: Quantidade de dias desejado para a previsão
+    response:
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json; charset=utf-8
+      body:
+        type: text
+        data: |-
+          {
+            "cidade": "Brejo Alegre",
+            "estado": "SP",
+            "atualizado_em": "2020-12-27",
+            "clima": [
+              {
+                "data": "2020-12-27",
+                "condicao": "pc",
+                "min": 20,
+                "max": 30,
+                "indice_uv": 13,
+                "condicao_desc": "Pancadas de Chuva"
+              },
+              {
+                "data": "2020-12-28",
+                "condicao": "pc",
+                "min": 22,
+                "max": 29,
+                "indice_uv": 13,
+                "condicao_desc": "Pancadas de Chuva"
+              }
+            ]
+          }

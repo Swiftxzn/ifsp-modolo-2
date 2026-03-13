@@ -1,0 +1,21 @@
+info:
+  name: POST convertAPI
+  type: http
+  seq: 17
+
+http:
+  method: GET
+  url: https://v2.convertapi.com/upload
+  body:
+    type: file
+    data:
+      - filePath: C:\Users\cg102933\Documents\back\captura1.png
+        contentType: image/png
+        selected: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

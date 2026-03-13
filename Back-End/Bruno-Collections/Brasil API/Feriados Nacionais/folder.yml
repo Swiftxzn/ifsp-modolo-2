@@ -1,0 +1,7 @@
+info:
+  name: Feriados Nacionais
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit
