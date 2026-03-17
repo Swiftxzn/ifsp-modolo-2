@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export default function Register() {
   return (
     <>
@@ -24,9 +26,9 @@ export default function Register() {
           placeholder="Confirme sua senha"
           className="border border-dashed border-purple-700 rounded-xl px-4 py-6"
         />
-        <a href="/login" className="text-sm text-purple-400 hover:underline">
+        <Link to="/login" className="text-sm text-purple-400">
           Já tem uma conta? Faça login
-        </a>
+        </Link>
         <button type="submit" className="bg-purple-400 text-white rounded-xl p-3">
           Cadastrar
         </button>

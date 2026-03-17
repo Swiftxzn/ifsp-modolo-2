@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 export default function Login() {
   return (
     <>
@@ -16,9 +17,9 @@ export default function Login() {
           placeholder="Senha"
           className="border border-dashed border-blue-700 rounded-xl px-4 py-6"
         />
-        <a href="/cadastro" className="text-sm text-blue-400 hover:underline">
-          Não tem uma conta? Cadastre-se
-        </a>
+        <Link to="/cadastro" className="text-sm text-blue-400">
+          Não tem uma conta? Registre-se
+        </Link>
         <button type="submit" className="bg-blue-400 text-white rounded-xl p-3">
           Login
         </button>
