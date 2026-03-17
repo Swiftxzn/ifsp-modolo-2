@@ -3,9 +3,9 @@ import { Link } from "react-router";
 export default function Register() {
   return (
     <>
-      <h1 className="text-center pb-8 font-bold text-xl text-purple-400">Registrar</h1>
+      <h1 className="text-center pb-8 font-bold text-xl text-purple-400 font-lexend-deca">Registrar</h1>
 
-      <form className="flex flex-col gap-4">
+      <form className="flex flex-col gap-4 font-iosevka-charon-mono">
         <input
           type="email"
           placeholder="E-mail"
@@ -29,7 +29,7 @@ export default function Register() {
         <Link to="/login" className="text-sm text-purple-400">
           Já tem uma conta? Faça login.
         </Link>
-        <button type="submit" className="bg-purple-400 text-white rounded-xl p-3">
+        <button type="submit" className="bg-purple-400 text-white rounded-xl p-3 font-lexend-deca">
           Cadastrar
         </button>
       </form>
