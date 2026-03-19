@@ -5,10 +5,10 @@ info:
 
 http:
   method: PUT
-  url: http://127.0.0.1:8000/alunos?id=7c2236d6-9420-4bd0-961f-9fdc8f2427cd
+  url: http://127.0.0.1:8000/alunos?id
   params:
     - name: id
-      value: 7c2236d6-9420-4bd0-961f-9fdc8f2427cd
+      value: ""
       type: query
   body:
     type: json

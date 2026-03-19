@@ -8,47 +8,63 @@ app.use(express.json());
 const contas = {};
 
 app.get("/", (req, res) => {
-  res.json({ msg: "API de contas bancárias!" });
+  res.json({ msg: "API simples de contas bancárias!" });
 });
 
 app.post("/contas", (req, res) => {
   const conta = req.body;
-  const idConta = uuidv4();
-  conta.id = idConta;
-  contas[idConta] = conta;
-  if (conta.saldo < 0) {
-    return res.status(400).json({ msg: "Saldo inválido!" });
-  }
-  res.status(201).json({ msg: "Conta criada com sucesso!", data: conta });
-});
-
-app.get("/contas", (req, res) => {
-  res.json({ contas: Object.values(contas) });
-});
-
-app.get("/contas/:id", (req, res) => {
-  const idConta = req.params.id;
-  res.json({ conta: contas[idConta] });
-});
-
-app.delete("/contas", (req, res) => {
-  const id = req.query.id;
-  console.log(contas[id]);
-  if (id && contas[id]) {
-    delete contas[id];
-    console.log(contas[id]);
-    res.json({ msg: "Conta excluída com sucesso!" });
+  console.log(conta?.saldo);
+  const saldo = Number(conta?.saldo); // NaN
+  console.log(saldo);
+  // NaN verdadeiro, NaN falso (35.00)
+  // ! NaN -> !false -> true
+  if (!isNaN(saldo) && saldo > 0) {
+    conta.saldo = saldo;
+    const numero = uuidv4();
+    conta.numero = numero;
+    contas[numero] = conta;
+    res
+      .status(201)
+      .json({ msg: "Conta bancária criada com sucesso!", data: conta });
   } else {
-    res.status(400).json({ msg: "Conta não encontrada!" });
+    res.status(400).json({ msg: "Saldo inválido!" });
+  }
+});
+
+//app.get("/contas", (req, res) => {
+//res.json({ contas: Object.values(contas) });
+//});
+
+// GET /contas/:numero
+app.get("/contas/:numero", (req, res) => {
+  // Params => parametros da URL
+  const numero = req.params.numero;
+  if (contas[numero]) {
+    res.json({ conta: contas[numero] });
+  } else {
+    res.status(404).json({ msg: "Conta não encontrada!" });
+  }
+});
+
+// GET /contas?numero=GJJD
+app.get("/contas", (req, res) => {
+  // Query Strung => ?chave=valor
+  const numero = req.query.numero;
+  if (!numero) {
+    res.json({ contas: Object.values(contas) });
+  } else if (contas[numero]) {
+    res.json({ contas: contas[numero] });
+  } else {
+    res.status(404).json({ msg: "Conta não encontrada!" });
   }
 });
 
 app.put("/contas", (req, res) => {
-  const id = req.query.id;
-  if (id && contas[id]) {
+  const numero = req.query.numero;
+  if (numero && contas[numero]) {
     const conta = req.body;
-    conta.id = id;
-    contas[id] = conta;
+    conta.numero = numero;
+    contas[numero] = conta;
     res.json({ msg: "Conta atualizada com sucesso!" });
   } else {
     res.status(404).json({ msg: "Conta não encontrada" });

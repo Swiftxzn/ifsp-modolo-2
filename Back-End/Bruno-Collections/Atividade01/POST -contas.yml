@@ -1,7 +1,7 @@
 info:
   name: POST /contas
   type: http
-  seq: 4
+  seq: 1
 
 http:
   method: POST
@@ -11,7 +11,7 @@ http:
     data: |-
       {
         "nome": "Bruno William",
-        "saldo": "-1"
+        "saldo": "230.75"
       }
   auth: inherit
 
